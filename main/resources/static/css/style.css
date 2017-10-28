@@ -1,0 +1,209 @@
+.bg {
+    background: url('../images/3.jpg') no-repeat center center;
+    position: absolute;
+    width: 100%;
+    height: 350px;
+    top:50px;
+    left:0;
+    z-index: -1;
+    background-size: cover;
+}
+#about h2 , #last_articles h2, #latest_countries h2{
+    font-size: 24px;
+    color: #2b2a2a;
+    margin-top: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.jumbotron {
+    color: #fff;
+    padding: 100px 25px;
+    font-family: Montserrat, sans-serif;
+    background: transparent;
+}
+
+.bg-grey {
+    background-color: #f6f6f6;
+}
+
+.thumbnail {
+    border: none;
+    border-radius: 0;
+}
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+}
+.line-effect{
+    border: none;
+    outline: none;
+    padding: 7px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.line-effect ~ .focus-border{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #c4bcba;
+    transition: 0.4s;
+
+}
+.line-effect:focus ~ .focus-border{
+    width: 100%;
+    transition: 0.4s;
+}
+
+.search-box input{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color: #fff;
+}
+.btn-default{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #fff;
+    opacity: 0.5;
+    font-size: 25px;
+}
+.btn-default {
+    color : #fff;
+    font-size: 17px;
+    opacity: 0.5;
+}
+.btn-default:hover{
+    background-color: transparent;
+    color : #fff;
+    opacity: 1;
+}
+#latest_countries p{
+    text-align: left;
+    margin-left: 15%;
+}
+.singin-form{
+    background: url('../images/4.jpg') no-repeat center center;
+    position: absolute;
+    width: 100%;
+    top:50px;
+    left:0;
+    z-index: -1;
+    background-size: cover;
+    opacity: 0.8;
+}
+.singin-form  form {
+    width: 300px;
+    margin: 270px auto;
+    z-index: 1;
+    background-color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-top: 20px;
+}
+
+.singin-form fieldset {
+    position: relative;
+    border: none;
+}
+
+.singin-form  label {
+    position: absolute;
+    top: 18px;
+    color: rgba(0, 0, 0, 0.3);
+    transform-origin: left;
+    transition: all 0.3s ease;
+}
+
+.singin-form input:focus ~ label {
+    color:  #777;
+}
+
+.singin-form input:focus ~ label,
+.singin-form input:valid ~ label {
+    top: 0;
+    transform: scale(0.6, 0.6);
+}
+
+.singin-form input {
+    font-size: 20px;
+    width: 100%;
+    border: none;
+    margin-top: 10px;
+}
+
+.singin-form input:focus {
+    outline: none;
+}
+
+.singin-form .after {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right,  #777 50%, transparent 50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    transition: all 0.6s ease;
+}
+
+.singin-form input:focus ~ .after {
+    background-position: 0 0;
+}
+
+.singin-form button {
+    position: relative;
+    width: 100%;
+    font-size: 20px;
+    font-family: system-ui, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    margin-top: 20px;
+    padding: 2px 10px;
+    color: rgba(0, 0, 0, 0.4);
+    background: white;
+    border: none;
+    background: linear-gradient(to right,  #777 50%, transparent 50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    transition: all 0.6s ease;
+}
+
+.singin-form button:before {
+    position: absolute;
+    content: "Sing In";
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    display: block;
+    background-color: white;
+}
+.singup-button button:before {
+    content: "Sing Up";
+}
+
+.singin-form button:active,
+.singin-form button:focus,
+.singin-form button:hover {
+    outline: none;
+    background-position: 0 0;
+    color:  #777;;
+}
+.singin-form p{
+ padding-top: 10px;
+}
