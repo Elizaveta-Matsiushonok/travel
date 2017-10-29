@@ -1,6 +1,6 @@
-var scotchApp = angular.module('scotchApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute']);
 
-scotchApp.config(function($routeProvider, $locationProvider) {
+myApp.config(function($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
     $routeProvider
 
@@ -22,11 +22,9 @@ scotchApp.config(function($routeProvider, $locationProvider) {
         });
 });
 
-scotchApp.controller('mainController', function($scope) {
+myApp.controller('mainController', function($scope) {
 });
-
-scotchApp.controller('singController', function($scope) {
-});
-
-scotchApp.controller('contentController', function($scope) {
+myApp.controller('singController', function($scope) {
+})
+.myApp.controller('contentController', function($scope) {
 });

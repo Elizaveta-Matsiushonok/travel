@@ -1,21 +1,25 @@
 package com.stp.controller;
 
 import com.stp.model.Country;
-import com.stp.repository.CountryRepository;
+import com.stp.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
-public class UserController {
+public class MainController {
 
     @Autowired
-    private CountryRepository countryRepository;
+    private CountryService countryService;
 
-    @GetMapping("/")
-    public String index(){
-        return "index.html";
+    @GetMapping("/countries")
+    public List<Country> getAllCountries(){
+        return  countryService.getAllCountries();
     }
+
+
+
 }

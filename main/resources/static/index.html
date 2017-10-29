@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!-- define angular app -->
-<html ng-app="scotchApp">
+<html ng-app="myApp">
 
 <head>
     <title>The Hitchhiker's Guide to the Earth</title>
@@ -137,6 +137,30 @@
     <!--</a>-->
     <!--<p>This travel guide was developed to get an opportunities for all people to inspire with traveling.</p>-->
 <!--</footer>-->
+<script>
+    $(document).ready(function(){
+        $(".navbar a, footer a[href='#']").on('click', function(event) {
+            if (this.hash !== "") {
+                event.preventDefault();
+                var hash = this.hash;
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 900, function(){
+                    window.location.hash = hash;
+                });
+            }
+        });
 
+        $(window).scroll(function() {
+            $(".slideanim").each(function(){
+                var pos = $(this).offset().top;
+                var winTop = $(window).scrollTop();
+                if (pos < winTop + 600) {
+                    $(this).addClass("slide");
+                }
+            });
+        });
+    })
+</script>
 </body>
 </html>
