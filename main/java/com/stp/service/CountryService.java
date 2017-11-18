@@ -9,4 +9,12 @@ public interface CountryService {
 
     List<Country> getAllCountries();
 
+    Country getCountryById(int id);
+
+    Country addCountry(Country country);
+
+    void deleteCountry(int id);
+
+    void updateCountry(Country country);
+
 }

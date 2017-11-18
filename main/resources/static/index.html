@@ -17,6 +17,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <script src="  https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
 
     <script src="app/app.js"></script>
 
@@ -121,7 +122,19 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#about">About</a></li>
                 <li><a href="#countries">Countries</a></li>
-                <li><a href="#singin">Sing in</a></li>
+                <li ng-hide="isAuthorized()"><a href="#singin">Sing in</a></li>
+                <li ng-show="isAuthorized()">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Options
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            <li><a href="#add-country">Add country</a></li>
+                            <li><a href="#countries">Countries</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#singout">Sing Out</a></li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
@@ -138,7 +151,7 @@
     <!--<p>This travel guide was developed to get an opportunities for all people to inspire with traveling.</p>-->
 <!--</footer>-->
 <script>
-    $(document).ready(function(){
+    /*$(document).ready(function(){
         $(".navbar a, footer a[href='#']").on('click', function(event) {
             if (this.hash !== "") {
                 event.preventDefault();
@@ -160,7 +173,7 @@
                 }
             });
         });
-    })
+    })*/
 </script>
 </body>
 </html>

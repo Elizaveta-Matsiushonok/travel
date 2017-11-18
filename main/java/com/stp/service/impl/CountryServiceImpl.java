@@ -19,4 +19,28 @@ public class CountryServiceImpl implements CountryService {
     public List<Country> getAllCountries() {
         return (List<Country>) countryRepository.findAll();
     }
+
+    public Country getCountryById(int id){
+        return countryRepository.findOne(id);
+    }
+
+    @Override
+    public Country addCountry(Country country) {
+
+        Country foundedCountry  = countryRepository.findCountryByTitle(country.getTitle());
+        if(foundedCountry != null){
+            return new Country();
+        }
+        return countryRepository.save(country);
+    }
+
+    @Override
+    public void deleteCountry(int id) {
+        countryRepository.delete(id);
+    }
+
+    @Override
+    public void updateCountry(Country country) {
+        countryRepository.save(country);
+    }
 }

@@ -20,6 +20,8 @@ public class Country {
     @Column
     private String climate;
     @Column
+    private String economy;
+    @Column
     private String religion;
     @Column
     private String culture;
@@ -119,6 +121,14 @@ public class Country {
         this.cities = cities;
     }
 
+    public String getEconomy() {
+        return economy;
+    }
+
+    public void setEconomy(String economy) {
+        this.economy = economy;
+    }
+
     @Override
     public String toString() {
         return "Country{" +
@@ -126,11 +136,14 @@ public class Country {
                 ", title='" + title + '\'' +
                 ", language='" + language + '\'' +
                 ", climate='" + climate + '\'' +
+                ", economy='" + economy + '\'' +
                 ", religion='" + religion + '\'' +
                 ", culture='" + culture + '\'' +
                 ", population=" + population +
                 ", area=" + area +
                 ", cuisine='" + cuisine + '\'' +
+                ", cities=" + cities +
+                ", places=" + places +
                 '}';
     }
 }

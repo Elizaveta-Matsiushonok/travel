@@ -1,15 +1,15 @@
 package com.stp.controller;
 
 import com.stp.model.Country;
+import com.stp.model.User;
 import com.stp.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class MainController {
 
     @Autowired
@@ -20,6 +20,16 @@ public class MainController {
         return  countryService.getAllCountries();
     }
 
+    @GetMapping("/country/{id}")
+    public Country getCountryById(@PathVariable int id){
+        System.out.println("kihk" + id);
+        return countryService.getCountryById(id);
+    }
+    @PostMapping("/addCountry")
+    public Country singUp(@RequestBody Country country){
+        System.out.println(country);
+        return countryService.addCountry(country);
+    }
 
 
 }

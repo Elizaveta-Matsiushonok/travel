@@ -2,19 +2,20 @@
 	<form action="#" autocomplete="off" >
 		<h2>Sing up</h2>
 		<fieldset>
-			<input id="first" type="text" name="login" required>
+			<input id="first" type="text" name="login"  ng-model="login" required>
 			<label for="first">Login</label>
 			<div class="after"></div>
 		</fieldset>
 		<fieldset>
-			<input id="last" type="password" name="password" required>
+			<input id="last" type="password" name="password"  ng-model="password" required>
 			<label for="last">Password</label>
 			<div class="after"></div>
 		</fieldset>
 		<fieldset>
 			<div class="singup-button">
-				<button type="submit">Sing up</button>
+					<button type="button" class="btn btn-success" ng-click="singup()">Login</button>
 			</div>
 		</fieldset>
+		<p ng-show="noUser">User with such login has already exists.</p>
 	</form>
 </div>

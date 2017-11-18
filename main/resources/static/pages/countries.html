@@ -1,17 +1,12 @@
-<div class="countries-list container-fluid text-center" ng-controller = "">
+<div class="countries-list container-fluid text-center" ng-controller = "countryController" ng-init="getCountries()">
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
+            <h1>Countries: </h1>
             <ul>
-                <li>USA</li>
-                <li>USA</li>
-                <li>USA</li>
-                <li>USA</li>
-                <li>USA</li>
-                <li>USA</li>
-                <li>USA</li>
-                <li>USA</li>
-                <li>USA</li>
+                <li ng-repeat="country in countries">
+                    <a href="#country/{{country.id}}">{{country.title}}</a>
+                </li>
             </ul>
         </div>
         <div class="col-sm-4"></div>

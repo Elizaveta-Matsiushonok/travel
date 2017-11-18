@@ -207,3 +207,57 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 .singin-form p{
  padding-top: 10px;
 }
+.add-county-form{
+    background-color: #f6f6f6;
+    position: absolute;
+    width: 100%;
+    top:50px;
+    left:0;
+    z-index: -1;
+    background-size: cover;
+    opacity: 0.8;
+}
+.add-county-form  form {
+    margin: 10px auto;
+    z-index: 1;
+    background-color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-top: 20px;
+}
+.btn-default {
+    margin-top: 10px;
+    color: #777;
+    font-size: 12px !important;
+    letter-spacing: 4px;
+    font-family: Montserrat, sans-serif;
+
+}
+.add-county-form   input{
+    width: 90%;
+}
+.add-county-form   textarea{
+    width: 90%;
+}
+.add-county-form   h2{
+    text-align: center;
+}
+.add-county-form   .btn-default{
+    border: 1px solid #777;
+    margin: 15px;
+}
+.add-county-form   .btn-default:hover{
+    background-color: #777777;
+
+}
+.add-country{
+    background-color: white;
+}
+.country-info{
+    margin-top: 50px;
+
+}
+.info{
+    text-align: left;
+}

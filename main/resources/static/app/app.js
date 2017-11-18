@@ -1,30 +1,158 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute',"ngStorage"]);
 
-myApp.config(function($routeProvider, $locationProvider) {
+myApp.config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
     $routeProvider
 
         .when('/', {
-            templateUrl : 'pages/home.html',
-            controller  : 'mainController'
+            templateUrl: 'pages/home.html',
+            controller: 'mainController'
         })
         .when('/singin', {
-            templateUrl : 'pages/singin.html',
-            controller  : 'singController'
+            templateUrl: 'pages/singin.html',
+            controller: 'mainController'
         })
         .when('/singup', {
-            templateUrl : 'pages/singup.html',
-            controller  : 'singController'
+            templateUrl: 'pages/singup.html',
+            controller: 'mainController'
+        })
+        .when('/country/:id', {
+            templateUrl: 'pages/country-info.html',
+            controller: 'countryController'
         })
         .when('/countries', {
-            templateUrl : 'pages/countries.html',
-            controller  : 'contentController'
+            templateUrl: 'pages/countries.html',
+            controller: 'countryController'
+        })
+        .when('/add-country', {
+            templateUrl: 'pages/add-country.html',
+            controller: 'countryController'
         });
 });
 
-myApp.controller('mainController', function($scope) {
+myApp.controller('countryController', function ($scope, $http, $routeParams, $location) {
+    $scope.countries = {};
+    $scope.country = {};
+    $scope.countryId = 0;
+
+    $scope.title = '';
+    $scope.language = '';
+    $scope.population = 0;
+    $scope.religion = '';
+    $scope.climate = '';
+    $scope.economy = '';
+    $scope.culture = '';
+    $scope.cuisine = '';
+    $scope.area = 0;
+
+    $scope.getCountries = function () {
+        $http({
+            method: "GET",
+            url: "/countries"
+        }).then(function mySuccess(response) {
+            $scope.countries = response.data;
+        });
+        console.log($scope.countries);
+    }
+
+    $scope.getCountry = function () {
+        let countryId = $routeParams.countryId;
+
+        $http({
+            method: "GET",
+            url: '/country/' + $routeParams.id
+        }).then(function mySuccess(response) {
+            $scope.country = response.data;
+        });
+    }
+
+    $scope.add = function () {
+        console.log($scope.title)
+        $http({
+            url: '/addCountry',
+            method: "POST",
+            data: {'title': $scope.title,
+            'language' : $scope.language,
+            'population': $scope.population,
+                'religion' :  $scope.religion,
+                'climate' : $scope.climate,
+                'economy' : $scope.economy,
+                'culture' :   $scope.culture,
+                'cuisine' : $scope.cuisine,
+                'area' : $scope.area
+            }
+        })
+            .then(function (response) {
+                    if(response.data.title !== null){
+                        $scope.noCountry = false;
+                        $scope.country = response.data;
+                        $location.path("/country/" + $scope.country.id);
+                    }else{
+                        $scope.noCountry = true;
+                    }
+                },
+                function (response) {
+                    $scope.noCountry = true;
+                });
+    };
 });
-myApp.controller('singController', function($scope) {
-})
-.myApp.controller('contentController', function($scope) {
+myApp.controller('mainController', function ($scope, $http, $location,$localStorage) {
+    $scope.isUser = false;
+    $scope.user = {};
+
+    $scope.login = '';
+    $scope.password = '';
+
+
+    $scope.singin = function () {
+        $http({
+            url: '/login',
+            method: "POST",
+            data: {'login': $scope.login, 'password' : $scope.password}
+        })
+            .then(function (response) {
+                    if(response.data.login !== null){
+                        $scope.noUser = false;
+                        $scope.user = response.data;
+                        $localStorage.user = response.data;
+                        $location.path("/" );
+
+                    }else{
+                        $scope.noUser = true;
+                    }
+                },
+                function (response) {
+                    $scope.noUser = true;
+                });
+    };
+
+    $scope.singup = function () {
+        $http({
+            url: '/singup',
+            method: "POST",
+            data: {'login': $scope.login, 'password' : $scope.password}
+        })
+            .then(function (response) {
+                    if(response.data.login !== null){
+                        console.log(response.data.login)
+                        $scope.noUser = false;
+                        $scope.user = response.data;
+                        $localStorage.user = response.data;
+                        $location.path("/" );
+                    }else{
+                        $scope.noUser = true;
+                    }
+                },
+                function (response) {
+                    $scope.noUser = true;
+                });
+    };
+    $scope.isAuthorized = function () {
+        if($localStorage.user != undefined || $localStorage.user != null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    };
 });

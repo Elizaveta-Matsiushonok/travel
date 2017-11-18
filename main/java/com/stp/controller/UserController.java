@@ -1,21 +1,29 @@
 package com.stp.controller;
 
 import com.stp.model.Country;
+import com.stp.model.User;
 import com.stp.repository.CountryRepository;
+import com.stp.repository.UserRepository;
+import com.stp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class UserController {
 
     @Autowired
-    private CountryRepository countryRepository;
+    private UserService userService;
 
-    @GetMapping("/")
-    public String index(){
-        return "index.html";
+    @PostMapping("/login")
+    public User login(@RequestBody User user){
+        System.out.println(user);
+        return userService.login(user.getLogin(), user.getPassword());
+    }
+
+    @PostMapping("/singup")
+    public User singUp(@RequestBody User user){
+        System.out.println(user);
+        return userService.singUp(user.getLogin(), user.getPassword());
     }
 }

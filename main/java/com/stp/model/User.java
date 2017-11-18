@@ -83,4 +83,17 @@ public class User {
     public void setArticlesOfHotel(Set<CityPlace> articlesOfHotel) {
         this.articlesOfHotel = articlesOfHotel;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", articlesOfFoodAndDrink=" + articlesOfFoodAndDrink +
+                ", articlesOfCityPlace=" + articlesOfCityPlace +
+                ", articlesOfHotel=" + articlesOfHotel +
+                '}';
+    }
 }
