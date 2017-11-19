@@ -27,6 +27,10 @@ myApp.config(function ($routeProvider, $locationProvider) {
         .when('/add-country', {
             templateUrl: 'pages/add-country.html',
             controller: 'countryController'
+        })
+        .when('/update-country/:id', {
+            templateUrl: 'pages/update-country.html',
+            controller: 'countryController'
         });
 });
 
@@ -44,6 +48,8 @@ myApp.controller('countryController', function ($scope, $http, $routeParams, $lo
     $scope.culture = '';
     $scope.cuisine = '';
     $scope.area = 0;
+    $scope.countryId = 0;
+    $scope.image = '';
 
     $scope.getCountries = function () {
         $http({
@@ -56,13 +62,43 @@ myApp.controller('countryController', function ($scope, $http, $routeParams, $lo
     }
 
     $scope.getCountry = function () {
-        let countryId = $routeParams.countryId;
 
         $http({
             method: "GET",
             url: '/country/' + $routeParams.id
         }).then(function mySuccess(response) {
             $scope.country = response.data;
+        });
+    }
+
+
+    $scope.getCountryForUpdate = function () {
+
+        $http({
+            method: "GET",
+            url: '/country/' + $routeParams.id
+        }).then(function mySuccess(response) {
+            $scope.countryId = response.data.id;
+            $scope.title = response.data.title;
+            $scope.language = response.data.language;
+            $scope.population = response.data.population;
+            $scope.religion = response.data.religion;
+            $scope.climate = response.data.climate;
+            $scope.economy = response.data.economy;
+            $scope.culture = response.data.culture;
+            $scope.cuisine = response.data.cuisine;
+            $scope.area = response.data.area;
+            $scope.image = response.data.image;
+        });
+    }
+
+    $scope.delete = function (id) {
+
+        $http({
+            method: "GET",
+            url: '/delete/' + id
+        }).then(function mySuccess(response) {
+            $location.path("/countries");
         });
     }
 
@@ -79,7 +115,8 @@ myApp.controller('countryController', function ($scope, $http, $routeParams, $lo
                 'economy' : $scope.economy,
                 'culture' :   $scope.culture,
                 'cuisine' : $scope.cuisine,
-                'area' : $scope.area
+                'area' : $scope.area,
+                'image' : $scope.image
             }
         })
             .then(function (response) {
@@ -95,6 +132,35 @@ myApp.controller('countryController', function ($scope, $http, $routeParams, $lo
                     $scope.noCountry = true;
                 });
     };
+
+    $scope.update = function () {
+        console.log("update " + $scope.countryId);
+        $http({
+            url: '/updateCountry',
+            method: "POST",
+            data: {'id' : $scope.countryId,
+                'title': $scope.title,
+                'language' : $scope.language,
+                'population': $scope.population,
+                'religion' :  $scope.religion,
+                'climate' : $scope.climate,
+                'economy' : $scope.economy,
+                'culture' :   $scope.culture,
+                'cuisine' : $scope.cuisine,
+                'area' : $scope.area,
+                'image' : $scope.image
+            }
+        })
+            .then(function (response) {
+                    if(response.data.title !== null){
+                        $scope.country = response.data;
+                        $location.path("/country/" + $scope.country.id);
+                    }else{
+                    }
+                },
+                function (response) {
+                });
+    };
 });
 myApp.controller('mainController', function ($scope, $http, $location,$localStorage) {
     $scope.isUser = false;
@@ -104,6 +170,16 @@ myApp.controller('mainController', function ($scope, $http, $location,$localStor
     $scope.password = '';
 
 
+    $scope.getLastCountries = function () {
+            $http({
+                method: "GET",
+                url: "/lastcountries"
+            }).then(function mySuccess(response) {
+                $scope.countries = response.data;
+            });
+            console.log($scope.countries);
+
+    }
     $scope.singin = function () {
         $http({
             url: '/login',
@@ -155,4 +231,22 @@ myApp.controller('mainController', function ($scope, $http, $location,$localStor
             return false;
         }
     };
+
+    $scope.isAdmin = function () {
+        if($localStorage.user != undefined || $localStorage.user != null){
+            if($localStorage.user.role == 1){
+                return true;
+            }
+            return false;
+        }
+        else{
+            return false;
+        }
+    };
+
+    $scope.singOut = function () {
+
+        $localStorage.user = null;
+    }
+
 });

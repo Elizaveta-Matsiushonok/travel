@@ -26,10 +26,25 @@ public class MainController {
         return countryService.getCountryById(id);
     }
     @PostMapping("/addCountry")
-    public Country singUp(@RequestBody Country country){
+    public Country addCountry(@RequestBody Country country){
         System.out.println(country);
         return countryService.addCountry(country);
     }
+    @GetMapping("/delete/{id}")
+    public void deleteCountry(@PathVariable int id){
+        System.out.println("kihk" + id);
+        countryService.deleteCountry(id);
+    }
 
+    @PostMapping("/updateCountry")
+    public Country updateCountry(@RequestBody Country country){
+        System.out.println(country);
+        return countryService.updateCountry(country);
+    }
+
+    @GetMapping("/lastcountries")
+    public List<Country> getLastCountries(){
+        return  countryService.getAllCountries().subList(0, 3);
+    }
 
 }

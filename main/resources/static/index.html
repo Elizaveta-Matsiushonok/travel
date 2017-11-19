@@ -49,7 +49,7 @@
         }
 
         .navbar-nav li a:hover, .navbar-nav li.active a {
-            background-color: #fff !important;
+            color: #fff !important;
         }
         .navbar-default .navbar-toggle {
             border-color: transparent;
@@ -120,7 +120,6 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#about">About</a></li>
                 <li><a href="#countries">Countries</a></li>
                 <li ng-hide="isAuthorized()"><a href="#singin">Sing in</a></li>
                 <li ng-show="isAuthorized()">
@@ -131,10 +130,11 @@
                             <li><a href="#add-country">Add country</a></li>
                             <li><a href="#countries">Countries</a></li>
                             <li class="divider"></li>
-                            <li><a href="#singout">Sing Out</a></li>
+
                         </ul>
                     </div>
                 </li>
+                <button ng-show="isAuthorized()" type="button" class="btn btn-default"  ng-click="singOut()">Sing out</button>
             </ul>
         </div>
     </div>

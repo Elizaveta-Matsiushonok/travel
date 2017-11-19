@@ -1,19 +1,25 @@
-<div class="countries-list container-fluid text-center" ng-controller = "countryController" ng-init = "getCountry()">
+<div class="container-fluid text-center country-info" ng-controller = "countryController" ng-init = "getCountry()">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-2">
 
             </div>
-            <div class="col-sm-4">
-                <div class="country-info">
+            <div class="col-sm-8 country">
+                <div>
                     <h1>{{country.title}}</h1>
-                        <div class="info">
-                            <h3>Language: {{country.language}}</h3>
-                            <h3>Religion {{country.religion}}</h3>
-                            <h3>Area {{country.area}}</h3>
-                            <h3>Population: {{country.population}}</h3>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <img src="{{country.image}}" style="width: 350px;">
                         </div>
-
-                        <h3>Culture</h3>
+                        <div class="col-sm-7">
+                            <div class="info">
+                                <h3>Language: {{country.language}}</h3>
+                                <h3>Religion: {{country.religion}}</h3>
+                                <h3>Area: {{country.area}}, km2</h3>
+                                <h3>Population: {{country.population}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                <h3>Culture</h3>
                         <p>{{country.culture}}</p>
                         <h3>Economy</h3>
                          <p>{{country.economy}}</p>
@@ -21,18 +27,17 @@
                        <p>{{country.cuisine}}</p>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" ng-show="isAdmin()">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="button" class="btn btn-default"  ng-click="delete()">Submit</button>
+                    <button type="button" class="btn btn-default"  ng-click="delete(country.id)">Delete</button>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" ng-show="isAuthorized()">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="button" class="btn btn-default"  ng-click="update()">Submit</button>
+                    <a href="#update-country/{{country.id}}">Update</a>
                 </div>
             </div>
-            <div class="col-sm-4">
-
+            <div class="col-sm-2">
             </div>
         </div>
 </div>

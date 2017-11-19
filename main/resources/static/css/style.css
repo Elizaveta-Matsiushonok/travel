@@ -261,3 +261,65 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 .info{
     text-align: left;
 }
+.countries-list h1{
+    font-size: 24px;
+    color: #2b2a2a;
+    margin-top: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+
+}
+.countries-list a{
+    color: #777;
+    font-size: 17px !important;
+    font-family: Montserrat, sans-serif;
+}
+.countries-list ul {
+    list-style: none;
+}
+
+.country-info .btn-default:focus {
+    color: #000;
+}
+.country-info .btn-default:hover {
+    color: #000;
+}
+.country-info a{
+    color: #777;
+    font-size: 15px !important;
+    font-family: Montserrat, sans-serif;
+}
+.country-info a:hover{
+    text-decoration: none;
+    color: #777777;
+}
+.last_articles a{
+    color: #777;
+    font-size: 15px !important;
+    font-family: Montserrat, sans-serif;
+}
+.info{
+      color: #777;
+      font-size: 15px !important;
+      font-family: Montserrat, sans-serif;
+  }
+.info h3{
+    font-size: 17px !important;
+}
+.country-info h1{
+    color: #777;
+    font-size: 30px !important;
+    font-family: Montserrat, sans-serif;
+}
+.country-info{
+    background-color: #f6f6f6;
+}
+.country{
+    background-color: #fff;
+}
+.thumbnail a{
+    color: #777;
+    font-size: 15px !important;
+    font-family: Montserrat, sans-serif;
+}

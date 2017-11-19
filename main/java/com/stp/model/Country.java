@@ -24,6 +24,8 @@ public class Country {
     @Column
     private String religion;
     @Column
+    private String image;
+    @Column
     private String culture;
     @Column
     private int population;
@@ -127,6 +129,14 @@ public class Country {
 
     public void setEconomy(String economy) {
         this.economy = economy;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

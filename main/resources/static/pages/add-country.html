@@ -1,5 +1,5 @@
 <div  class="add-county-form">
-    <div class="countries-list container-fluid text-center" ng-controller = "countryController" ng-init = "getCountry()">
+    <div class="countries-list container-fluid text-center" ng-controller = "countryController">
         <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8 add-country" >
@@ -8,27 +8,33 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="title">Title</label>
             <div class="col-sm-10">
-            <input id="title" type="text" name="title"  ng-model="title" required>
+            <input id="title" type="text" name="title"  ng-model="title" required />
             </div>
 
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="language">Language</label>
             <div class="col-sm-10">
-            <input id="language" type="language" name="language"  ng-model="language" required>
+            <input id="language" type="text" name="language"  ng-model="language" required />
             </div>
 
         </div>
         <div class="form-group">
+            <label class="control-label col-sm-2" for="image">Image</label>
+            <div class="col-sm-10">
+                <input id="image" type="text" name="image"  ng-model="image" required />
+            </div>
+        </div>
+        <div class="form-group">
             <label class="control-label col-sm-2" for="population">Population</label>
             <div class="col-sm-10">
-            <input id="population" type="population" name="population"  ng-model="population" required>
+            <input id="population" type="text" name="population"  ng-model="population" required />
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="area">Area</label>
             <div class="col-sm-10">
-            <input id="area" type="area" name="area"  ng-model="area" required>
+            <input id="area" type="text" name="area"  ng-model="area" required>
             </div>
 
 
@@ -36,20 +42,20 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="religion">Religion</label>
             <div class="col-sm-10">
-            <input id="religion" type="religion" name="religion"  ng-model="religion" required>
+            <input id="religion" type="text" name="religion"  ng-model="religion" required />
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="climate">Climate</label>
             <div class="col-sm-10">
-            <textarea id="climate" type="climate" name="climate"  ng-model="climate" required></textarea>
+            <textarea id="climate" type="text" name="climate"  ng-model="climate" required></textarea>
             </div>
 
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="economy">Economy</label>
             <div class="col-sm-10">
-                <textarea id="economy" type="economy" name="economy"  ng-model="economy" required></textarea>
+                <textarea id="economy" type="text" name="economy"  ng-model="economy" required></textarea>
             </div>
 
         </div>
@@ -57,14 +63,14 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="culture">Culture</label>
             <div class="col-sm-10">
-                <textarea id="culture" type="culture" name="culture"  ng-model="culture" required></textarea>
+                <textarea id="culture" type="text" name="culture"  ng-model="culture" required></textarea>
             </div>
 
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="economy">Cuisine</label>
             <div class="col-sm-10">
-                <textarea id="cuisine" type="cuisine" name="cuisine"  ng-model="cuisine" required></textarea>
+                <textarea id="cuisine" type="text" name="cuisine"  ng-model="cuisine" required></textarea>
             </div>
 
         </div>

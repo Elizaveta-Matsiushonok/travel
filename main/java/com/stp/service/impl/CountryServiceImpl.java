@@ -40,7 +40,17 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public void updateCountry(Country country) {
-        countryRepository.save(country);
+    public Country updateCountry(Country country) {
+        Country foundedCountry = countryRepository.findOne(country.getId());
+        foundedCountry.setArea(country.getArea());
+        foundedCountry.setClimate(country.getClimate());
+        foundedCountry.setCuisine(country.getCuisine());
+        foundedCountry.setCulture(country.getCulture());
+        foundedCountry.setEconomy(country.getEconomy());
+        foundedCountry.setPopulation(country.getPopulation());
+        foundedCountry.setLanguage(country.getLanguage());
+        foundedCountry.setReligion(country.getReligion());
+        foundedCountry.setImage(country.getImage());
+        return countryRepository.save(foundedCountry);
     }
 }
